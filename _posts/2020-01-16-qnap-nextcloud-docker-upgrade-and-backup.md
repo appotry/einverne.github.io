@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "威联通折腾篇十七：Docker 安装的 NextCloud 升级、备份及恢复"
+aliases: "威联通折腾篇十七：Docker 安装的 NextCloud 升级、备份及恢复"
 tagline: ""
 description: ""
 category: 经验总结
@@ -54,3 +55,13 @@ last_updated:
 ## 从 18 版本升级到 19 版本
 
 从 NextCloud 18 升级到 NextCloud 19 没有遇到什么坑。
+
+
+## 从 19 版本升级到 20.0
+
+将 Nextcloud docker 镜像升级到 20.0 没有遇到问题。
+
+## 从 20.0 升级到 21
+
+同样也没有遇到问题。
+

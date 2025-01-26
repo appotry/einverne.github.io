@@ -1,9 +1,10 @@
 ---
 layout: post
 title: "我的 Obsidian 笔记跨设备同步方案"
+aliases: "我的 Obsidian 笔记跨设备同步方案"
 tagline: ""
 description: ""
-category: 检验总结
+category: 经验总结
 tags: [obsidian, markdown, git, syncthing, note, note-taking,]
 last_updated:
 ---
@@ -11,10 +12,11 @@ last_updated:
 自从半年前发现了 [Obsidian](/post/2020/05/obsidian-note-taking.html) 这款笔记软件，我就开始大量的使用该应用做笔记，有人说过：「工具是开发者方法论的固化」。这么多年了我一直有一种工具控的倾向，往往同一个需求会对比可能的所有方案，最后再决定一个，但是近些年来我越来越倾向于「简单就是好」，并且数据要由自己掌控的「工具选择逻辑」。
 
 ## Do one thing and do it well
+
 基于上面的选择逻辑，我的 Obsidian 跨平台同步工具，我选择了：
 
 - [Syncthing](/post/2019/10/syncthing.html)，作为文件同步工具
-- Markor，作为 Android 上的 Markdown 编辑器，我提交了一段模板可以来创建 Zettelkasten 笔记
+- ~~Markor，作为 Android 上的 Markdown 编辑器，我提交了一段模板可以来创建 Zettelkasten 笔记~~ 不再使用 Marker 作为 Android 客户端
 - Git，版本同步（配合[git subtree](/post/2020/04/git-subtree-usage.html)）
 - Bash/Cron/[Hammerspoon](https://github.com/einverne/dotfiles/blob/master/hammerspoon/autoscript.lua)，定时脚本提交备份到 Git，然后自动推送到远端备份。
 
@@ -24,12 +26,12 @@ last_updated:
 
 这一年来 Obsidian 的生态发生了很多变化，Obsidian 已经发布了 Android/iOS 版本，虽然现在我依然使用 Markor 来查看笔记，但最近已经慢慢的转向 Obsidian 官方的应用，Obsidian 官方的应用在搜索方面做的要比 Markor 好。
 
-而之前使用 Syncthing，现在也一如既往的使用 Syncthing，但是最近购入了 Obsidian Sync 一方面支持一下开发者，另一方面也想慢慢地将移动端使用官方的同步工具来同步笔记。
+~~而之前使用 Syncthing，现在也一如既往的使用 Syncthing，但是最近购入了 Obsidian Sync 一方面支持一下开发者，另一方面也想慢慢地将移动端使用官方的同步工具来同步笔记。~~ 还是回归了 Syncthing。
 
 <blockquote class="twitter-tweet"><p lang="zh" dir="ltr">用了一年多 <a href="https://twitter.com/hashtag/obsidian?src=hash&amp;ref_src=twsrc%5Etfw">#obsidian</a> ，虽然平时都用 Syncthing 来同步，但还是买了一年 Sync，支持一下开发者。 <a href="https://t.co/YPvNXMDhyI">pic.twitter.com/YPvNXMDhyI</a></p>&mdash; Ein Verne (@einverne) <a href="https://twitter.com/einverne/status/1440676136460046351?ref_src=twsrc%5Etfw">September 22, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-
 ## 我的需求
+
 我最基本的需求，就是当我有什么想法的时候，可以随时随地地记录到一个地方，这个地方以前是 wiznote，但是我迁移到了 Obsidian 之后，缺乏两个机制：
 
 - 一个是多平台的同步

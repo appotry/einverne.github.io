@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "Rime 配置使用韩语及日语输入法"
+aliases:
+- "Rime 配置使用韩语及日语输入法"
 tagline: ""
 description: ""
 category: 经验总结
@@ -9,6 +11,8 @@ last_updated:
 ---
 
 总结一些 Rime 下韩语输入方案。
+
+如果你想要 Rime 下的日语输入法，可以点击[这里](https://blog.einverne.info/post/2022/10/japanese-input-method-macos-rime.html)。
 
 ## 韩语输入方案
 韩文字母输入键盘布局有 Dubeolsik(두벌식, 2-set)， Sebeolsik Final (세벌식 최종, 3-set) , Sebeolsik 390, Sebeolsik Noshift

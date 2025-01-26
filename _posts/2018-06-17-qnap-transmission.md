@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "威联通折腾篇五：安装 Transmission 下载 BT"
+aliases: "威联通折腾篇五：安装 Transmission 下载 BT"
 tagline: ""
 description: ""
 category: 经验总结
@@ -61,7 +62,7 @@ last_updated:
 即可
 
 ### 远程控制
-配合 Android 上的 Transdroid 使用，需要开启远程访问控制，如果有固定的访问 IP 段，可以对应的配置，直接禁用下面两个白名单危险系数较高，慎重：
+配合 Android 上的 [[Transdroid]] 使用，需要开启远程访问控制，如果有固定的访问 IP 段，可以对应的配置，直接禁用下面两个白名单危险系数较高，慎重：
 
     "rpc-whitelist-enabled": false,
     "rpc-host-whitelist-enabled": false,
@@ -167,6 +168,7 @@ last_updated:
 跟多的详细配置可以参考官网[文档](https://github.com/transmission/transmission/wiki/Editing-Configuration-Files)
 
 ## Add tracker
+选择合适的 [[Tracker]] 可以显著的提升下载体验。
 可以从下面两个地址中找到每天更新的 Tracker 服务器地址：
 
 - <https://github.com/ngosang/trackerslist>

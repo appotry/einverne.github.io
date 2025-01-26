@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Spring 中 ThreadPoolTaskExecutor 配置"
+aliases: "Spring 中 ThreadPoolTaskExecutor 配置"
 tagline: ""
 description: ""
 category: 学习笔记
@@ -53,15 +54,15 @@ Spring 线程池 ThreadPoolTaskExecutor 通过 XML 方式配置：
 属性字段说明：
 
 - `corePoolSize`：核心线程数，线程池维护的最少线程数，不管创建后空闲与否，除非设置了 `allowCoreThreadTimeOut`
-- `keepAliveSeconds`：存活时间，允许的空闲时间，如果经过 `keepAliveTime` 时间后，超过核心线程数的线程还没有接受到新的任务，那就回收
 - `maxPoolSize`：线程池维护线程的最大数量
+- `keepAliveSeconds`：存活时间，允许的空闲时间，如果经过 `keepAliveTime` 时间后，超过核心线程数的线程还没有接受到新的任务，那就回收
 - `queueCapacity`：缓存队列
 - `rejectedExecutionHandler`：对拒绝 task 的处理策略
 
-	AbortPolicy，用于被拒绝任务的处理程序，它将抛出 RejectedExecutionException。
-	CallerRunsPolicy，用于被拒绝任务的处理程序，它直接在 execute 方法的调用线程中运行被拒绝的任务。
-	DiscardOldestPolicy，用于被拒绝任务的处理程序，它放弃最旧的未处理请求，然后重试 execute。
-	DiscardPolicy，用于被拒绝任务的处理程序，默认情况下它将丢弃被拒绝的任务。
+	- AbortPolicy，用于被拒绝任务的处理程序，它将抛出 RejectedExecutionException。
+	- CallerRunsPolicy，用于被拒绝任务的处理程序，它直接在 execute 方法的调用线程中运行被拒绝的任务。
+	- DiscardOldestPolicy，用于被拒绝任务的处理程序，它放弃最旧的未处理请求，然后重试 execute。
+	- DiscardPolicy，用于被拒绝任务的处理程序，默认情况下它将丢弃被拒绝的任务。
 
 将任务添加到线程池时：
 
