@@ -1,22 +1,26 @@
 ---
 layout: post
 title: "BitTorrent 协议中的 BenCode 编码"
+aliases: "BitTorrent 协议中的 BenCode 编码"
 tagline: ""
 description: ""
 category: 学习笔记
 tags: [bittorrent, bencode, encode, encoding, ]
-last_updated:
+last_updated: 2022-06-10 02:22:08
+create_time: 2021-07-03 10:32:51
 ---
 
 在了解 [BitTorrent](/post/2020/02/everything-related-about-bittorrent-and-pt.html) 协议的时候，想着 `.torrent` 文件是如何生成的，所以就找了几个 CLI，比如 `transmission-cli` 和 `mktorrent`这两个开源的制作 torrent 文件的开源项目，发现他们就是按照一种约定的格式来生成文件。而这个约定的结构中就少不了现在要谈的 BenCode 编码。
 
+BitTorrent 协议使用 `.torrent` 文件来描述资源信息。`.torrent` 文件使用一套 BenCode 编码来对信息进行描述。
+
 ## What is BenCode
 BenCode 是用于编码 torrent 文件的一种编码格式。BenCode 支持四种数据类型：
 
-- 字符串
-- 整数
-- 数组
-- 字典
+- 字符串 String
+- 整数 Integer
+- 数组 List
+- 字典 Dictionary
 
 需要注意的是 BenCode 只用 ASCII 字符进行编码，如果是非 ASCII 码，BenCode 会用一种编码方式将其转换成 ASCII 码。
 
@@ -25,15 +29,16 @@ BenCode 是用于编码 torrent 文件的一种编码格式。BenCode 支持四�
 
 	<Length>:<Content>
 
-比如 `6:string` 就表示 `string` 本身。
+比如 `6:string` 就表示 `string` 本身。其中 6 表示的是字符串长度。长度使用十进制表示。
 
-### 整数 {#integar}
+### 整数 {#integer}
 整数编码时在前后加 `i` 和 `e`，比如：
 
 	i123e
 
-
 表示整数 123 . 这种方式也可以表示负数：`i-1e`.
+
+不过需要注意的是 `i-0e`, `i03e` 这样的表示是非法的，但是 `i0e` 是合法的，表示整数 0 .
 
 ### 数组 {#array}
 列表前后用 `l` 和 `e` 标识。列表中的元素可以是 BenCode 支持的任何一种类型。比如要编码字符串 `content` 和数字 42:
@@ -59,6 +64,15 @@ BenCode 是用于编码 torrent 文件的一种编码格式。BenCode 支持四�
 
 	d3:age9:Ein Verne9:interestsi18e4:namel4:book5:movieee
 
+### 总结一下
+
+| 类似   | 数据         | 编码         |
+| ------ | ------------ | ------------ |
+| int    | -42          | i-42e        |
+| string | 'span'       | 4:spam       |
+| list   | ['XYZ', 432] | l3:XYZi432ee |
+| dict   | {'XYZ': 432} | d3:XYZi432ee             |
+
 ## torrent 文件
 在了解了 BenCode 的编码后，用纯文本文件打开 `.torrent` 文件就能知道一二了。本质上 torrent 文件就是一个用 BenCode 编码的纯文本文件，torrent 在 BitTorrent 协议中又被称为 metainfo。
 
@@ -76,7 +90,7 @@ torrent 文件中的所有字符串必须是 UTF-8 编码的。
 
 	mktorrent -a http://announce.url -c "This is comments" -l 18 -o "test.torrent" -p -v README.md
 
-然后查看 test.torrent 内容：
+然后查看 `cat test.torrent` 内容：
 
 	d8:announce19:http://announce.url7:comment16:This is comments10:created by13:mktorrent 1.013:creation datei1585360743e4:infod6:lengthi5e4:name9:README.md12:piece lengthi262144e6:pieces20:h7@xxxxxlxx]7:privatei1eee
 
@@ -149,6 +163,20 @@ torrent 文件中的所有字符串必须是 UTF-8 编码的。
 多文件时 info 字典中的内容稍微多一些。
 
 - files 是多个文件的信息，其中包括了文件长度和路径。
+
+## 相关库
+构造好字典之后，使用如下库调用即可。
+
+- PHP：[sandfoxme/bencode](https://github.com/sandfoxme/bencode)、[rchouinard/bencode](https://github.com/rchouinard/bencode)、[dsmithhayes/bencode](https://github.com/dsmithhayes/bencode)、[bhutanio/torrent-bencode](https://github.com/bhutanio/torrent-bencode)
+- Python：[amyth/bencode](https://github.com/amyth/bencode)、[utdemir/bencoder](https://github.com/utdemir/bencoder)、[jcul/bencode](https://github.com/jcul/bencode)、[fuzeman/bencode.py](https://github.com/fuzeman/bencode.py)
+- Node.js： [themasch/node-bencode](https://github.com/themasch/node-bencode)、[benjreinhart/bencode-js](https://github.com/benjreinhart/bencode-js)
+
+
+## 客户端
+可以对 torrent 文件进行编辑的客户端：
+
+- [Torrent File Editor](https://torrent-file-editor.github.io/) Windows, macOS
+- [BEncode Editor](https://sites.google.com/site/ultimasites/bencode-editor)
 
 ## reference
 

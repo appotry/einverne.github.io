@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Asus RT-AC86U 初始设置"
+aliases: "Asus RT-AC86U 初始设置"
 tagline: ""
 description: ""
 category:
@@ -19,14 +20,17 @@ last_updated:
 
 ## 固件选择
 
+- [官改固件](https://koolshare.cn/thread-139965-1-1.html) 是在官方的固件上的增强，增加了软件中心
 - [原版 Merlin 固件](https://www.asuswrt-merlin.net/download)
-- [Merlin 改版](http://koolshare.cn/thread-127878-1-1.html)
-- [官改固件](https://koolshare.cn/thread-139965-1-1.html)
+- [Merlin 改版](http://koolshare.cn/thread-127878-1-1.html) 在原本梅林固件的基础上修改而来
 
 
 
 ## 刷机步骤
 AC86U 的刷机步骤非常简单，通过网页「升级页面」，直接上传 `.w` 后缀的固件，然后等待刷机完成自动重启即可。
+
+2020 年 11 月固件版本：3.0.0.4.386_40451_koolshare
+2022 年 8 月升级到：3.0.0.4.386_41634_koolshare
 
 ## 启用 Clash 代理插件
 

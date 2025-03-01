@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "使用 Git worktree 将同一个项目分裂成多个本地目录"
+aliases: "使用 Git worktree 将同一个项目分裂成多个本地目录"
 tagline: ""
 description: ""
 category: 学习笔记
@@ -13,7 +14,6 @@ last_updated:
 这个时候我知道了 git 原来还有一个命令叫做 `git worktree` 这是 Git 2.15 版本引入的新概念。我们都知道一个正常的 git workflow 可能就是从 master 拉出新分支 feature 进行功能开发，如果遇到有紧急 bug，那么从 master 拉出 hotfix 分支紧急修复在合并。这是一个比较常规的工作流，那么 git worktree 为何要被引用进来。从官方的文档 [^1] 上能看到 git worktree 的作用是将多个 working trees 附加到同一个 repository 中，允许用户一次 check out 多个分支。但是问题是为了解决相同的问题，为何要引入一个更加复杂的 git worktree ？
 
 [^1]: https://git-scm.com/docs/git-worktree
-
 
 ## 疑惑
 
@@ -36,7 +36,6 @@ git worktree 的命令只有几行非常容易记住
 
 当工作结束后可以直接删除该目录，然后运行 `git worktree prune`.
 
-
 ## 总结
 
 git worktree 非常适合大型项目又需要维护多个分支，想要避免来回切换的情况，这里总结一些优点：
@@ -45,4 +44,6 @@ git worktree 非常适合大型项目又需要维护多个分支，想要避免�
 - git worktree 的提交可以在同一个项目中共享
 - git worktree 和单独 clone 项目相比，节省了硬盘空间，又因为 git worktree 使用 hard link 实现，要远远快于 clone
 
+## More
 
+- 学习 Git 最好的[动画交互教程](https://learngitbranching.js.org/)

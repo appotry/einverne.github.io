@@ -1,16 +1,15 @@
 ---
 layout: post
-title: "自建邮件服务器可选项"
-alias: "自建邮件服务器可选项"
+title: "自建邮件服务器解决方案"
+alias: "自建邮件服务器解决方案"
 tagline: ""
 description: ""
 category: 学习笔记
-tags: [mail, linux, docker, smtp, mail-server,  ]
+tags: [mail, linux, docker, smtp, mail-server, self-hosted ]
 last_updated:
 ---
 
 整理一些可以自行搭建邮件服务器的项目。
-
 
 ## Postal
 [[postal]] 是一个使用 Rust 编写的邮件服务器，可以发送和接收邮件。这是一个可以代替 [[SendGrid]]、[[Mailgun]] 或者 Postmark 的开源工具，可以在自己的服务器上假设。
@@ -23,9 +22,7 @@ GitHub 地址：<https://github.com/postalserver/postal>
 - <https://mailinabox.email/guide.html>
 
 ## mailu
-Mailu.io是一款免费开源且性能强大、功能丰富的域名邮箱系统。它基于Docker, 具有部署简单，可移植性高，备份方便等多种优势。
-
-- <https://mailu.io/>
+[Mailu.io](https://mailu.io/) 是一款免费开源且性能强大、功能丰富的域名邮箱服务。它基于Docker, 具有部署简单，可移植性高，备份方便等多种优势。
 
 搭建介绍：
 
@@ -53,7 +50,6 @@ mailcow 使用介绍：
 Poste 运行需要 800MB 左右空间，只支持 64 位操作系统。
 
 Poste 可以支持 Docker 安装，但是提供了 Free、Pro 和 Pro+ 版本，都需要按年订阅。
-
 
 ## docker-mailserver
 文档不是很全

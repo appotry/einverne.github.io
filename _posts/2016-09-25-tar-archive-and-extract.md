@@ -77,6 +77,15 @@ tar 命令常用参数
 
 然后打包的结果 tar 中就只有 `chevereto_chevereto_content` 目录下的内容。
 
+### 解压时展开压缩包的目录
+比如说在使用 `-C` 来解压目录的时候，在压缩包内所有的文件内容都在 `path-1.4` 这样的带版本的文件夹内，如果要想要解压到 `path` 这样的目录，可以使用：
+
+```
+tar xzvf path-1.4.tar.gz -C path --strip-components=1
+```
+
+注意 `path` 目录需要存在，否则会报错。
+
 ### 列出压缩包内的文件
 
     tar -ztvf filename.tar.gz     # 列出 tar.gz 下文件
@@ -114,6 +123,22 @@ tar 命令常用参数
 ### 不解压直接查看压缩包内容
 
     tar -tf archive.tar.gz
+
+### 跨机器压缩传输
+上面提到的命令都需要将压缩文件存储到本地，那么如果有一种情况，本地空间有限，无法容纳压缩包的内容，想要实时通过压缩，然后传输到另一台机器，可以使用：[^1]
+
+```
+tar czvf - /source | ssh username@remote.host "cd /destination; tar xzvf -"
+```
+
+[^1]: <https://serverfault.com/a/678430/288331>
+
+### 跨机器打包
+比如要在 A 机器将目录 `/www/backup` 备份到 B 机器的 `/home/einverne/Backup` 目录，并压缩：
+
+```
+tar zcvf - /www/backup/ | ssh your_username@ip_of_hostname "cat > /home/einverne/Backup/aapanel.tgz"
+```
 
 ## Gzip Bzip2 vs XZ
 

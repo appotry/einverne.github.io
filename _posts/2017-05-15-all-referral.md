@@ -1,6 +1,8 @@
 ---
 layout: post
 title: "各种邀请链接整理"
+aliases:
+- "各种邀请链接整理"
 tagline: ""
 description: ""
 category: 整理合集
@@ -16,38 +18,25 @@ last_updated:
 
 ## 工具应用
 
-### Trello
-看板应用
+- [Trello](https://trello.com/einverne/recommend) 看板应用
+- [NextDNS](https://nextdns.io/?from=fgmesze4)
 
-- <https://trello.com/einverne/recommend>
-
-
-### NextDNS
-
-- <https://nextdns.io/?from=fgmesze4>
-
-
-### Pomotodo
-番茄工作法
-
-- <https://pomotodo.com/r/MFPLHRDX>
-
-### Airbnb
-民宿
-
-- <https://abnb.me/e/YynYPCsLWU>
+- [Pomotodo](https://pomotodo.com/r/MFPLHRDX) 番茄工作法
+- [Airbnb](https://abnb.me/e/YynYPCsLWU) 民宿
 
 ## VPS
 
-### DirectSpace
-从 14 年开始用，只遇到过一次宕机，虽然是 ovz 的但架个代理也完全足够了，况且两年才 15 刀干啥不续费。
+~~### DirectSpace
+从 14 年开始用，只遇到过一次宕机，虽然是 ovz 的但架个代理也完全足够了，况且两年才 15 刀干啥不续费。~~
+~~<https://gtk.pw/ds>~~
 
-- <https://gtk.pw/ds>
+DirectSpace 多年没有更新，虚拟化也停留在老一代的 OpenVZ ，放弃使用了。
 
-### Linode
-用的日本的节点，稳得不行，5 刀一个月
-
-- <https://gtk.pw/linode>
+- [搬瓦工 BandwagonHost](https://gtk.pw/bwg)是一家提供高可靠 VPS 的虚拟主机提供商，网络质量比较好。
+- [Linode](https://gtk.pw/linode) 用的日本的节点，5 刀一个月
+- HostHatch
+- GreenCloud
+- RackNerd
 
 ## 云产品
 
@@ -56,13 +45,14 @@ last_updated:
 ## 网盘
 
 ### Dropbox
-Dropbox 用到如今最好的网盘，我也[只推荐 Dropbox](/post/2015/07/dropbox-tips.html)
+[Dropbox](https://db.tt/isyvu6ny) 用到如今最好的网盘，我也[只推荐 Dropbox](/post/2015/07/dropbox-tips.html)
 
-- <https://db.tt/isyvu6ny>
+- [PCloud](https://my.pcloud.com/#page=register&invite=VKXvZKvEM17)
 
-### PCloud
+## InfiniCLOUD
+[InfiniCloud](https://einverne.github.io/post/2022/08/teracloud-webdav-usage.html) 是一款日本的提供 [[WebDAV]] 支持的云存储服务提供商。
 
-- <https://my.pcloud.com/#page=register&invite=VKXvZKvEM17>
+[注册](https://infini-cloud.net/) 的时候使用 `7BUQR` 可以额外获得 1GB 的容量。
 
 ## 论坛
 
@@ -78,7 +68,7 @@ Dropbox 用到如今最好的网盘，我也[只推荐 Dropbox](/post/2015/07/dr
 - <http://www.right.com.cn/forum/?fromuser=einverne>
 
 ### pdawiki
-这是一个电子词典的论坛，GoldenDict 时获知，里面有各种电子词典分享，论坛中的人也很友好，千万不要注水
+这是一个电子词典的论坛，[[GoldenDict]] 时获知，里面有各种电子词典分享，论坛中的人也很友好，千万不要注水
 
 - <https://www.pdawiki.com/forum/?fromuser=288470>
 - <https://www.pdawiki.com/forum/thread-11779-1-1.html?x=288470>
