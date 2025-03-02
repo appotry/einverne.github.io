@@ -17,13 +17,13 @@ jks 全称 Java KeyStore ，是 Java 的 keytools 证书工具支持的证书私
 
 ## pfx
 
-pfx 全称是 Predecessor of PKCS#12, 是微软支持的私钥格式，二进制格式，同时包含证书和私钥，一般有密码保护。一般用于 Windows IIS 服务器。
+[[PFX]] 全称是 Predecessor of PKCS#12, 是微软支持的私钥格式，二进制格式，同时包含证书和私钥，一般有密码保护。一般用于 Windows IIS 服务器。
 
     openssl pkcs12 -in xxx.pfx
 
 转为 pem
 
-    openssl pkcs12 -in for-iis.pfx -out for-iis.pem -nodes
+    openss pkcs12 -in for-iis.pfx -out for-iis.pem -nodes
 
 ## cer
 cer 是证书的公钥，一般都是二进制文件，不保存私钥。
@@ -34,7 +34,7 @@ cer 是证书的公钥，一般都是二进制文件，不保存私钥。
     openssl x509 -in certificate.der -inform der -text -noout
 
 ## pem
-pem 全称是 Privacy Enhanced Mail，格式一般为文本格式，以 `-----BEGIN` 开头，以 `-----END` 结尾，中间内容是 BASE64 编码，可保存公钥，也可以保存私钥。有时候会将 pem 格式的私钥改后缀为 `.key` 以示区别。
+[[PEM]] 全称是 Privacy Enhanced Mail，格式一般为文本格式，以 `-----BEGIN` 开头，以 `-----END` 结尾，中间内容是 BASE64 编码，可保存公钥，也可以保存私钥。有时候会将 pem 格式的私钥改后缀为 `.key` 以示区别。
 
 这种格式的证书常用于 Apache 和 Nginx 服务器，所以我们在配置 Nginx SSL 的时候就会发现这种格式的证书文件。
 

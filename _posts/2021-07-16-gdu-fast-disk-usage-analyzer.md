@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "使用 gdu 快速查看磁盘空间占用"
-aliases: 
+aliases:
 - "使用 gdu 快速查看磁盘空间占用"
 tagline: ""
 description: ""
@@ -10,22 +10,21 @@ tags: [ linux, gdu, du, disk, disk-space, cli, go-lang ]
 last_updated:
 ---
 
-
 gdu 是一个使用 Go 编写的，非常漂亮的磁盘空间占用分析工具。
 
 直接运行 gdu 可以展示一个非常直观的磁盘空间占用。
 
 gdu 为 SSD 做了优化，但在机械硬盘上也能很好的工作。
 
-
 ![gdu-20210904214154.png](/assets/gdu-20210904214154.png)
 
 ## Install
 Linux:
+
 ```
 curl -L https://github.com/dundee/gdu/releases/latest/download/gdu_linux_amd64.tgz | tar xz
 chmod +x gdu_linux_amd64
-mv gdu_linux_amd64 /usr/bin/gdu
+sudo mv gdu_linux_amd64 /usr/bin/gdu
 ```
 
 macOS:
@@ -35,7 +34,17 @@ brew install -f gdu
 brew link --overwrite gdu  # if you have coreutils installed as well
 ```
 
-更多的安装方式可以参考[repo](https://github.com/dundee/gdu)
+在 macOS 下因为 gdu 和 coreutils 中的命名冲突了，所以 Brew 安装完成之后名字叫做 `gdu-go`。
+
+Android Termux 安装：
+
+```
+wget https://github.com/dundee/gdu/releases/lastest/download/gdu_linux_arm64.tgz
+tar xzvf gdu_linux_arm64.tgz
+chmod +x gdu_linux_arm64
+```
+
+更多的安装方式可以参考 [repo](https://github.com/dundee/gdu)
 
 ## Usage
 

@@ -21,7 +21,7 @@ rsync 是一个功能非常强大的工具，其命令也有很多功能选项�
 - 安全：可以使用 scp、ssh 等方式来传输文件，当然也可以通过直接的 socket 连接
 - 支持匿名传输，以方便进行网站镜像
 
-rysnc 的官方网站：<http://rsync.samba.org/>，可以从上面得到最新的版本。
+rsync 的官方网站：<http://rsync.samba.org/>，可以从上面得到最新的版本。
 
 ## rsync 的使用
 
@@ -208,7 +208,17 @@ rsync 中的命令 参数 `-e, --rsh=COMMAND` 指定使用 rsh、ssh 方式进�
 
 	rsync --remove-source-files -zvh backup.tar /tmp/backups/
 
+需要注意的是 `rsync` 使用 `--remove-source-files` 之后源文件同步之后会被删除，但是源文件所在的文件夹是不会被删除的，可以通过如下命令删除空文件夹：
+
+    find . -depth -type d -empty -delete
+
+### 同步过程中删除远程中已经在本地删除的文件
+使用 `--delete` 选项。
+
+    rsync -avh --delete /path/to/local root@remote:/path/to/remote
+
 ### 设置备份带宽
+`--bwlimit=RATE` 选项允许用户指定最大传输速率，RATE 值可以是字符串也可以是数值，如果是字符串，比如 `--bwlimit=1.5m` 表示每秒最高传输速率 1.5m，如果没有后缀那么单位是 1024 bytes。
 
 	rsync --bwlimit=100 -avzhe ssh /var/lib/rpm/ root@remoteip:/root/tmprpm/
 

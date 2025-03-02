@@ -5,7 +5,7 @@ aliases: "Podcast 托管"
 tagline: ""
 description: "Podcast 托管，及申请攻略"
 category: 经验总结
-tags: [podcast, google, itunes, ]
+tags: [podcast, google, itunes, youtube-podcast, spotify, 小宇宙 ]
 last_updated:
 ---
 
@@ -23,12 +23,13 @@ Podcast 近两年又突然火起来，一度认为 Podcast 是最近才流行起
 - Internet Archive
 - 最后 Cloudup 我使用的方案，支持 1000 个文件托管，具体可参看之前总结的一篇[文章](/post/2015/04/cloudup.html)
 
-其实苹果官网也给了一个 Podcast Hosting 的[列表](https://itunespartner.apple.com/en/podcasts/partnersearch) 可以查看。
+其实苹果官网也给了一个 Podcast Hosting 的[列表](https://podcasters.apple.com/partner-search) 可以查看。
 
 ## Generate RSS feed
 
 iTunes 和 Google Play Music 都需要不同格式的 RSS，需要特别考虑。另外音频最好带封面 1400*1400 px 到 2048*2048 px 大小，这个是 iTunes Store 需要的。
 
+-你觉得到大理，如果要推荐一个必吃的美食，你会推荐什么？
 
 
 ### iTunes 需要的标签

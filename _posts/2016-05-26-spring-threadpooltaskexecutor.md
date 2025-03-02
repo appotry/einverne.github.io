@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Spring 中 ThreadPoolTaskExecutor 配置"
+aliases: "Spring 中 ThreadPoolTaskExecutor 配置"
 tagline: ""
 description: ""
 category: 学习笔记
@@ -11,13 +12,13 @@ last_updated:
 The Spring Framework provides abstractions for asynchronous execution and scheduling of tasks with the TaskExecutor and TaskScheduler interfaces, respectively.
 
 ## The Spring TaskExecutor abstraction
-Spring’s TaskExecutor interface is identical to the java.util.concurrent.Executor interface.
+Spring’s TaskExecutor interface is identical to the `java.util.concurrent.Executor` interface.
 
 接口 ExecutorService 的几个常用方法：
 
-- submit() 有返回值的任务使用
-- execute() 无返回值的任务使用
-- getActiveCount() 当前活跃线程数
+- `submit()` 有返回值的任务使用
+- `execute()` 无返回值的任务使用
+- `getActiveCount()` 当前活跃线程数
 
 ### TaskExecutor types
 Spring 提供了一系列的预置的 `TaskExecutor` 的实现，几乎能满足日常的所有需求。
@@ -32,7 +33,7 @@ Spring 提供了一系列的预置的 `TaskExecutor` 的实现，几乎能满足
 ### ThreadPoolTaskExecutor Config
 Spring 线程池 ThreadPoolTaskExecutor 通过 XML 方式配置：
 
-<!-- spring thread pool executor -->
+```
     <bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
         <!-- 线程池维护线程的最少数量 -->
         <property name="corePoolSize" value="5" />
@@ -49,19 +50,20 @@ Spring 线程池 ThreadPoolTaskExecutor 通过 XML 方式配置：
             <bean class="java.util.concurrent.ThreadPoolExecutor$CallerRunsPolicy" />
         </property>
     </bean>
+```
 
 属性字段说明：
 
 - `corePoolSize`：核心线程数，线程池维护的最少线程数，不管创建后空闲与否，除非设置了 `allowCoreThreadTimeOut`
-- `keepAliveSeconds`：存活时间，允许的空闲时间，如果经过 `keepAliveTime` 时间后，超过核心线程数的线程还没有接受到新的任务，那就回收
 - `maxPoolSize`：线程池维护线程的最大数量
+- `keepAliveSeconds`：存活时间，允许的空闲时间，如果经过 `keepAliveTime` 时间后，超过核心线程数的线程还没有接受到新的任务，那就回收
 - `queueCapacity`：缓存队列
 - `rejectedExecutionHandler`：对拒绝 task 的处理策略
 
-	AbortPolicy，用于被拒绝任务的处理程序，它将抛出 RejectedExecutionException。
-	CallerRunsPolicy，用于被拒绝任务的处理程序，它直接在 execute 方法的调用线程中运行被拒绝的任务。
-	DiscardOldestPolicy，用于被拒绝任务的处理程序，它放弃最旧的未处理请求，然后重试 execute。
-	DiscardPolicy，用于被拒绝任务的处理程序，默认情况下它将丢弃被拒绝的任务。
+	- AbortPolicy，用于被拒绝任务的处理程序，它将抛出 RejectedExecutionException。
+	- CallerRunsPolicy，用于被拒绝任务的处理程序，它直接在 execute 方法的调用线程中运行被拒绝的任务。
+	- DiscardOldestPolicy，用于被拒绝任务的处理程序，它放弃最旧的未处理请求，然后重试 execute。
+	- DiscardPolicy，用于被拒绝任务的处理程序，默认情况下它将丢弃被拒绝的任务。
 
 将任务添加到线程池时：
 

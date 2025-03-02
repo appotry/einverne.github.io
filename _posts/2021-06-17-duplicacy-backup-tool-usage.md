@@ -6,23 +6,23 @@ aliases:
 tagline: ""
 description: ""
 category: 经验总结
-tags: [ backup, duplicacy, backblaze, google-drive, rsync ]
+tags: [ backup, backup-tool, duplicacy, backblaze, google-drive, rsync ]
 last_updated:
 ---
-
 
 [Duplicacy](https://duplicacy.com/) 是一个用 Go 语言实现的，开源的，跨平台的备份工具。
 
 特性：
 
-- 提供了一个网页端管理
+- 命令行版本对个人用户完全免费
+- 付费授权会提供了一个网页端管理
 - 支持 Amazon S3，Google Cloud Storage，Microsoft Azure，Dropbox 和 Backblaze 等云存储，本地磁盘，SFTP 等等
 - 支持多个客户端备份到同一个云存储
 - 支持增量备份
 - 支持加密备份
-- 对个人用户完全免费
 
 ## Lock Free Deduplication
+
 这是一个对 Duplicacy 实现原理的简单介绍，完整的说明可以参考发布在 IEEE Transactions on Cloud Computing 的 [Paper](https://ieeexplore.ieee.org/document/9310668)。
 
 Lock-Free Deduplication 的三个重要内容：
@@ -31,7 +31,7 @@ Lock-Free Deduplication 的三个重要内容：
 - 将每一块内容存储到云端空间，每一块的名字是其 hash，依赖文件系统的 API 来管理块，而不是用一个中心化的索引数据来管理
 - 当备份被删除时使用 _two-step fossil collection_ 算法移除未被引用的块
 
-variable-size chunking 算法又被称为 Content-Defined Chunking，被很多备份工具使用。相较于固定大小的块划分算法（rsync 所使用的）, 
+variable-size chunking 算法又被称为 Content-Defined Chunking，被很多备份工具使用。相较于固定大小的块划分算法（rsync 所使用的）,
 
 检查一个块是否被上传过，只需要通过文件名（hash）执行一个文件查询。这使得只提供了非常有限操作的云端存储变成了一个非常强大的现代化的备份工具后端，既可以实现 block-level 的重复数据删除，也可以实现 file-level 的重复数据删除。不依赖于一个中心的索引数据库也就意味着没有必要实现一个存储系统上的分布式锁。
 
@@ -45,6 +45,7 @@ variable-size chunking 算法又被称为 Content-Defined Chunking，被很多�
 - permanently remove them once certain conditions are met
 
 ## 安装
+
 从项目 [release](https://github.com/gilbertchen/duplicacy/) 页面下载可执行二进制文件。
 
 ```
@@ -53,18 +54,28 @@ sudo ln -s /opt/duplicacy /usr/local/bin/duplicacy
 sudo chmod +x /usr/local/bin/duplicacy
 ```
 
+macOS 下
+
+```
+https://github.com/gilbertchen/duplicacy/releases/download/v3.1.0/duplicacy_osx_arm64_3.1.0
+```
+
 ## 前提知识
 
 ### storage
-在 Duplicacy 的概念中 storage 指的是备份存储的地方。这个地方可以是 本地，可以是 SFTP，或者现成的云端存储服务比如 Backblaze。
+
+在 Duplicacy 的概念中 storage 指的是备份存储的地方。这个地方可以是本地，也可以是 [[SFTP]]，或者现成的云端存储服务比如 [[Backblaze]]。
 
 ### repository
+
 repository 可以理解成仓库，可以将一个本地文件夹作为仓库。
 
 ### snapshot
+
 snapshot 直译是快照，`duplicacy backup` 命令会将 repository 的一份本地快照备份到 storage。
 
 ## 使用
+
 Duplicacy 相关的命令：
 
 ```
@@ -73,10 +84,10 @@ NAME:
 
 USAGE:
    duplicacy [global options] command [command options] [arguments...]
-   
+
 VERSION:
    2.7.2 (175ADB)
-   
+
 COMMANDS:
    init		Initialize the storage if necessary and the current directory as the repository
    backup	Save a snapshot of the repository to the storage
@@ -94,7 +105,7 @@ COMMANDS:
    info		Show the information about the specified storage
    benchmark	Run a set of benchmarks to test download and upload speeds
    help, h	Shows a list of commands or help for one command
-   
+
 GLOBAL OPTIONS:
    -verbose, -v 		show more detailed information
    -debug, -d 			show even more detailed information, useful for debugging
@@ -109,6 +120,7 @@ GLOBAL OPTIONS:
 ```
 
 ### 初始化存储
+
 Duplicacy 可以备份目录级别数据。
 
 ```
@@ -143,10 +155,11 @@ duplicacy backup -storage storage_name
     duplicacy list -a
 
 ### 还原
+
 可以使用如下的命令还原：
 
     duplicacy restore -r revision_number
-    
+
 说明：
 
 - 这里的 revision_number 可以通过 `list` 命令查看。
@@ -164,7 +177,7 @@ duplicacy backup -storage storage_name
 
     duplicacy prune -keep 1:7
 
-表示的是对于超过7天的版本，每天保留一个版本。总结一下，`-keep` 接受两个数字 `n:m` ，表示的是对于 m 天前的版本，每隔 n 天保留一个版本。如果 n 为 0，任何超过 m 天的版本会被删掉。
+表示的是对于超过 7 天的版本，每天保留一个版本。总结一下，`-keep` 接受两个数字 `n:m` ，表示的是对于 m 天前的版本，每隔 n 天保留一个版本。如果 n 为 0，任何超过 m 天的版本会被删掉。
 
 这样如果要实现删除 180 天前的版本：
 
@@ -174,10 +187,12 @@ duplicacy backup -storage storage_name
 
     duplicacy prune -keep 0:180 -keep 7:30 -keep 1:7
 
-## 备份到 [[Backblaze B2]]
+## 备份到 Backblaze
+
+[[Backblaze B2 Cloud Storage]] 提供了 10GB 免费存储空间
 
 ```
-# 将本地存储加密备份到 B2 存储的 Bucket 
+# 将本地存储加密备份到 B2 存储的 Bucket
 duplicacy init -e repository_id b2://unique-bucket-name
 ```
 
@@ -188,6 +203,7 @@ duplicacy init -e repository_id b2://unique-bucket-name
     duplicacy bacup
 
 ## 备份到多个存储
+
 根据 [[3-2-1 备份原则]] 至少需要有三份完整的数据，其中一份必须在异地，Duplicacy 只需要添加多个存储即可实现多地备份。
 
     cd path/to/dir
@@ -210,8 +226,6 @@ duplicacy init -e repository_id b2://unique-bucket-name
 
     duplicacy copy -from default -to offsite_storage_name
 
-
-
 ## 恢复到另外的文件夹或恢复到另外的电脑
 
     cd path/to/dir1
@@ -228,19 +242,22 @@ duplicacy init -e repository_id b2://unique-bucket-name
 
 这里需要注意备份的远端地址需要是一样的。比如上面的例子中都使用 SFTP 的地址。
 
-## Duplicacy 支持的Storage
+## Duplicacy 支持的 Storage
 
 ### Local
+
 本地文件的话，直接写文件路径：
 
     /path/to/backup
 
 ### SFTP
+
 SFTP 语法：
 
     sftp://username@server
 
 ### Dropbox
+
 Storage URL:
 
     dropbox://path/to/storage
@@ -319,12 +336,12 @@ Google Cloud Storage 也可以在设置中开启 [S3 兼容](https://cloud.googl
 
     hubic://path/to/storage
 
-
 ### OpenStack Swift
 
     swift://user@auth_url/container/path
 
 ### WebDAV
+
 [[WebDAV]] 链接：
 
     webdav://username@server/path/to/storage (path relative to the home directory)
@@ -365,6 +382,7 @@ duplicacy prune -all -keep 0:60 -keep 15:30
 ```
 
 ## Duplicacy vs duplicity
+
 Duplicacy 和 duplicity 相比较而言，Duplicacy 在备份很多次的情况下会比 duplicity 占用更多的空间，但是 Duplicacy 每一次备份的时间都要远远少于 duplicity。
 
 duplicity 有一个严重的缺陷在于其增量备份方法，每一次备份都需要用户选择是否全量备份或者增量备份，并且其设计决定了在一个备份了很多次的仓库中删除任何一个历史的备份变得不可能。
@@ -373,8 +391,7 @@ duplicity 有一个严重的缺陷在于其增量备份方法，每一次备份�
 
 ## reference
 
-
 - <https://duplicacy.com/>
 - <https://github.com/gilbertchen/duplicacy/wiki/Lock-Free-Deduplication>
 - [Duplicacy User Guide](https://forum.duplicacy.com/t/duplicacy-user-guide/1197)
-- [[backup-tools-options]]
+- [[backup-tools]]

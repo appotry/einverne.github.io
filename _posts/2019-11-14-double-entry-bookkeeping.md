@@ -1,11 +1,11 @@
 ---
 layout: post
-title: "复式记账"
-aliases: "复式记账"
+title: "学习 Beancount 入门复式记账"
+aliases: "学习 Beancount 入门复式记账"
 tagline: ""
 description: ""
 category: 学习笔记
-tags: [accounting, debits-and-credits, ]
+tags: [accounting, debits-and-credits, beancount, double-entry, ]
 last_updated:
 ---
 
@@ -126,8 +126,8 @@ Debits 和 Credits 是经济交易中的双向流动：
 
 假如用上面的例子，那就应该是：
 
-	2019-11-11 支出：文具 +100
-	2019-11-11 现金 	-100
+	2019-11-11 支出：文具  +100
+	2019-11-11 现金 	  -100
 
 ## Why accounting?
 更好的了解自己，认识自己的财务状况，这包括
@@ -222,10 +222,10 @@ beancount 具体语法和使用方式 byvoid 的[这篇文章](https://www.byvoi
 ## 我的管理方式
 新建一个目录专门用来记录，该目录使用 git 来做版本管理，敏感内容使用 git-crypt 加密。
 
-
 ## reference
 
 - <https://plaintextaccounting.org/>
 - <https://www.youtube.com/watch?v=VhwZ9t2b3Zk>
 - <http://www.mathstat.dal.ca/~selinger/accounting/tutorial.html>
 - [[fava 相关配置]]
+- [个人 Beancount 模板](https://github.com/einverne/beancount-sample)

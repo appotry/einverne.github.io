@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "适用于编程 Coding 的字体"
+aliases: "适用于编程 Coding 的字体"
 tagline: ""
 description: ""
 category: 经验总结
@@ -8,7 +9,7 @@ tags: [fonts, font, coding, programming, style, ]
 last_updated:
 ---
 
-之前的一篇文章就曾经提到[字体的历史](/post/2015/05/font.html)
+之前的一篇文章就曾经提到[字体的历史](/post/2015/05/font.html)，这篇文章着重在推荐几款我个人认为非常适合编程这个环境的字体。
 
 在选择一款字体之前，先要了解几个术语
 
@@ -17,10 +18,15 @@ last_updated:
 - Serif font 衬线字体
 - font weight 字重，字体的粗细程度，常见的字重有 Light, Regular, Medium, Bold 等等
 
-在选择一款字体的时候我会考虑以下几个点：
+在选择一款编程字体的时候我会考虑以下几个点：
 
 - 能否区分，数字 `0` 以及大小写 `o` 与 `O`
 - 能否区分，数字 `1` 以及大写字母 `I` 以及小写字母 `l`
+- 个人喜欢等宽的字体，并且可以兼容终端，IDE 和各种操作系统
+
+综合上面的考虑，我个人使用 Fira Code 作为终端，IntelliJ IDEA，VSCode 的编程字体已经很多年了。
+
+另外 JetBrains 推出的 JetBrains Mono 字体也是一个不错的选择。
 
 ## 推荐一个盲测字体对比的网站
 通过两两对比，最后选出你最喜欢的编程字体。
@@ -57,6 +63,8 @@ DescriptionInconsolata is an open-source font created by Raph Levien and release
 - <https://github.com/googlefonts/Inconsolata>
 
 ## Fira Code
+个人使用的编程字体 Fira Code，用了很多年了。
+
 为 Programming 设计的等宽字体。该字体为 Programming 做了非常多的特殊设计，比如大于等于，不等于等等。
 
 这款字体区别与其他字体的另一个典型特点就是 `@`, `&` 和 `r` 的区别。
@@ -77,8 +85,18 @@ DescriptionInconsolata is an open-source font created by Raph Levien and release
 
 - <https://github.com/belluzj/fantasque-sans>
 
-## reference
 
+更多编程字体预览：
+
+- <https://coding-fonts.netlify.app/>
+- https://www.programmingfonts.org/#pt
+- https://github.com/subframe7536/Maple-font
+- https://rubjo.github.io/victor-mono/
+- https://github.com/TakWolf/fusion-pixel-font
+- https://www.ibm.com/plex/
+- https://github.com/be5invis/Sarasa-Gothic
+
+## reference
 
 - <https://itnext.io/11-best-programming-fonts-724283a9ed57>
 - <https://github.com/ProgrammingFonts/ProgrammingFonts>

@@ -21,7 +21,7 @@ last_updated:
 - <https://github.com/zhaojun1998/zfile>
 
 ## lsky-pro
-又一款用 PHP 所写图片管理系统。
+[[lsky-pro]] 是一款用 PHP 框架 [[laravel]] 编写的图片管理系统。
 
 - <https://github.com/wisp-x/lsky-pro>
 
@@ -31,7 +31,7 @@ last_updated:
 - <https://github.com/0oVicero0/OneList>
 
 ## oneindex
-又一款用来展示 One Drive 列表的项目，PHP
+[[oneindex]] 是一款用来展示 One Drive 列表的项目，PHP 编写。
 
 - <https://github.com/donwa/oneindex>
 

@@ -1,14 +1,17 @@
 ---
 layout: post
 title: "Obsidian 未来的笔记应用"
+aliases:
+- "Obsidian 未来的笔记应用"
 tagline: ""
 description: ""
 category: 产品体验
 tags: [obsidian, note-taking, evernote, linux,]
-last_updated:
+last_updated: 2022-02-10 07:36:40
+create_time: 2020-07-03 10:32:44
 ---
 
-看过我过去文章的人都知道在此之前我都使用 WizNote 来作为本地笔记应用，但是这两年在记笔记这件事情上出现了非常多的可能性，虽然我本人一直在关注着不同类型的笔记应用，从传统的 Evernote，OneNote 到 Notion 等等模块化的笔记应用，多多少少也尝试了一下，但是一直没有深入的去用，因为就我目前的需求，WizNote + 本地的 markdown + vim + git 基本就满足了，直到昨天晚上我在豆瓣上阅读了[笔记类软件的双向链新浪潮](https://www.douban.com/note/762552900/) 这篇文章，然后我发现原来我在记笔记的时候遇到的一些问题原来还有这样一种解决方式。
+看过我过去文章的人都知道在此之前我都使用 WizNote 来作为本地笔记应用，但是这两年在记笔记这件事情上出现了非常多的可能性，虽然我本人一直在关注着不同类型的笔记应用，从传统的 Evernote，OneNote 到 Notion 等等模块化的笔记应用，多多少少也尝试了一下，但是一直没有深入的去用，因为就我目前的需求，WizNote + 本地的 markdown + vim + git 基本就满足了，直到昨天晚上我在豆瓣上阅读了 [笔记类软件的双向链新浪潮](https://www.douban.com/note/762552900/) 这篇文章，然后我发现原来我在记笔记的时候遇到的一些问题原来还有这样一种解决方式。
 
 ## 存在的问题
 我在用纯手工方式管理笔记的时候遇到的这些问题，中间我也曾想使用 wiki 来代替笔记，尝试了 [[GitBook]], BookStack, [[TiddlyWiki]] 等等，都或多或少的有些问题。
@@ -43,6 +46,9 @@ Linux 下官方默认给出的是 AppImage，还可以下载 snap 包，通过�
 
     sudo snap install obsidian.snap --dangerous
 
+如果不添加 `--dangerous` 可能会报错：
+
+> error: cannot find signatures with metadata for snap "obsidian_0.13.19_amd64.snap"
 
 ## 特性
 Obsidian 这些功能是吸引我让我尝试的理由。
@@ -94,57 +100,57 @@ Obsidian 不期望有一个插件可以解决所有的问题，但 Obsidian 提�
 
 新建笔记相关：
 
-Shortcut | description
----------|------------
-Cmd+n    | New note
-Cmd+Shift+n | New Zettelkasten note
-Cmd+p    | Filter the command
+| Shortcut    | description           |
+| ----------- | --------------------- |
+| Cmd+n       | New note              |
+| Cmd+Shift+n | New Zettelkasten note |
+| Cmd+p       | Filter the command    |
 
 编辑相关的：
 
-Shortcut | description
----------|------------
-Cmd+b    | bold
-Cmd+i    | italic selection
+| Shortcut   | description                        |
+| ---------- | ---------------------------------- |
+| Cmd+b      | bold                               |
+| Cmd+i      | italic selection                   |
+| Ctrl+Alt+L | format markdown (借助 Linter 插件) |
 
 笔记间跳转：
 
-Shortcut | description
----------|------------
-Cmd+o    | Open quick switcher, jump to different notes by fuzz search
-Option+Enter | follow the link under cursor
-Cmd+Option+Enter | Open link under cursor in new pane
-Cmd+`[` | Back
-Cmd+`]` | Forward
-Cmd+hjkl | Navigate to left/below/above/right pane
-Cmd+w  | Close active pane
-Cmd+`\` | Split vertically
-Cmd+`-` | Split horizontally
+| Shortcut         | description                                                 |
+| ---------------- | ----------------------------------------------------------- |
+| Cmd+o            | Open quick switcher, jump to different notes by fuzz search |
+| Option+Enter     | follow the link under cursor                                |
+| Cmd+Option+Enter | Open link under cursor in new pane                          |
+| Cmd+`[`          | Back                                                        |
+| Cmd+`]`          | Forward                                                     |
+| Cmd+hjkl         | Navigate to left/below/above/right pane                     |
+| Cmd+w            | Close active pane                                           |
+| Cmd+`\`          | Split vertically                                            |
+| Cmd+`-`          | Split horizontally                                          |
 
 浏览模式：
 
-Shortcut | description
----------|------------
-Cmd+e    | Toggle edit/preview mode
+| Shortcut | description              |
+| -------- | ------------------------ |
+| Cmd+e    | Toggle edit/preview mode |
 
-Obsidian 的模板功能非常强大，我自定义了一个快捷键 ⌘ + ⇧ + i 来从模板中快速插入到当前的文档中。
-
+Obsidian 的模板功能非常强大，我自定义了一个快捷键 <kbd>⌘</kbd> + <kbd>⇧</kbd> + <kbd>i</kbd> 来从模板中快速插入到当前的文档中。
 
 ## Zettelkasten method
 卡片标签式笔记法，Obsidian 也可以兼容，启用插件后侧边栏点击就能够快速建立时间戳开头的笔记迅速进入编写。
 
 ## 延伸阅读
 
-- [[Trilium Notes]]
+- [[Trilium Notes]] 基于网页的笔记
+- [[Logseq]] 开源的基于块的双向链接笔记
+- [[TiddlyWiki]] 单文件 Wiki
 
 ## 个人使用技巧
 
 ### 使用 GitHub 作为同步后端
-都知道 Obisidian 其实是一个本地的离线客户端，官方截止 11 月份还没有推出同步的功能，但是优先推出了 Publish 服务，可以将笔记一键发布到 Obisidian 提供的网站上。但是对于我而言，我习惯将笔记在本地整理，然后将相关的内容整理成文章发布在这个博客中，所以剩下的问题就是我的本地笔记同步的问题了。
+都知道 Obsidian 其实是一个本地的离线客户端，官方截止 11 月份还没有推出同步的功能，但是优先推出了 Publish 服务，可以将笔记一键发布到 Obsidian 提供的网站上。但是对于我而言，我习惯将笔记在本地整理，然后将相关的内容整理成文章发布在这个博客中，所以剩下的问题就是我的本地笔记同步的问题了。
 
-我个人是将 Obsidian 的本地仓库放到一个 Git 仓库中管理，并且每隔一定时间自动提交到 Git 中，这样即使我不在电脑边，也可以第一时间访问到我的内容。我使用 Hammerspoon 提供的 task api，写了一个[简单的脚本](https://github.com/einverne/dotfiles/blob/master/hammerspoon/autoscript.lua) 自动提交仓库。
-
-
+我个人是将 Obsidian 的本地仓库放到一个 Git 仓库中管理，并且每隔一定时间自动提交到 Git 中，这样即使我不在电脑边，也可以第一时间访问到我的内容。我使用 Hammerspoon 提供的 task api，写了一个 [简单的脚本](https://github.com/einverne/dotfiles/blob/master/hammerspoon/autoscript.lua) 自动提交仓库。
 
 ## Links
 Obsidian 的开发 Roadmap
@@ -153,32 +159,31 @@ Obsidian 的开发 Roadmap
 
 ## 对比其他产品
 
-在整理了这篇文章半年后，我几乎每条都在使用 Obisidian，甚至用 Karabine [绑定了 ob 的快捷键](https://github.com/einverne/dotfiles/blob/master/karabiner/karabiner.edn)，在任何情况，任何应用中，我只需要按下 o，不松开，然后快速按下 b，就可以 open Obsidian 了。
+在整理了这篇文章半年后，我几乎每条都在使用 Obsidian，甚至用 Karabine [绑定了 ob 的快捷键](https://github.com/einverne/dotfiles/blob/master/karabiner/karabiner.edn) ，在任何情况，任何应用中，我只需要按下 o，不松开，然后快速按下 b，就可以 open Obsidian 了。
 
 这是半年后的 Graph
 
 ![Obsidian graph](/assets/obsidian-graph.png)
 
-虽然使用过程中从来没有遇到任何问题，但是却一直收到其他产品的推荐，比如 Logseq, RoamEdit 等等，虽然 Obisidian 已经足够满足我的使用了，但也经不住尝试了一下其他的产品，只能说今年因为 Roam Research 的创新激活了笔记应用的市场。
+虽然使用过程中从来没有遇到任何问题，但是却一直收到其他产品的推荐，比如 Logseq, RoamEdit 等等，虽然 Obsidian 已经足够满足我的使用了，但也经不住尝试了一下其他的产品，只能说今年因为 Roam Research 的创新激活了笔记应用的市场。
 
 ### Logseq
 
-Logseq 在自己的官网将自己描述为一个受到 Roam Research, Org mode, Tiddlywiki, Workflowy 启发的开源的 Roam 笔记应用，我打开官网尝试了一下，虽然双向链，块引用，运行在浏览器，以 GitHub 作为笔记的存储，看起来很美好，似乎是 Roam Research 的代替品，但是我在使用的过程中，不清楚是以为网络问题还是因为我没有登录的关系，体验并不是很好，一来创建新页面的时候卡了，而来默认的显示状态和编辑状态的变化略大，使得视觉上的体验不是很好。在界面交互上甚至并不能和其提到 Workflowy 的网页应用流畅度相比。不过因为其开源属性使得每一个人都可以根据自己的喜好进行扩展和修改，其未来可期。
+[[Logseq]] 在自己的官网将自己描述为一个受到 Roam Research, Org mode, Tiddlywiki, Workflowy 启发的开源的 Roam 笔记应用，我打开官网尝试了一下，虽然双向链，块引用，运行在浏览器，以 GitHub 作为笔记的存储，看起来很美好，似乎是 Roam Research 的代替品，但是我在使用的过程中，不清楚是以为网络问题还是因为我没有登录的关系，体验并不是很好，一来创建新页面的时候卡了，而来默认的显示状态和编辑状态的变化略大，使得视觉上的体验不是很好。在界面交互上甚至并不能和其提到 Workflowy 的网页应用流畅度相比。不过因为其开源属性使得每一个人都可以根据自己的喜好进行扩展和修改，其未来可期。
 
-另外一个需要注意的就是目前的 Logseq 只有网页版，并且因为 Logseq 网络访问需要经过其代理才能将数据保存到 GitHub，相较于 Obisidian 直接使用本地 Markdown 文件保存，Logseq 并不占优势。不过有能力可以自行搭建。
+~~另外一个需要注意的就是目前的 Logseq 只有网页版，并且因为 Logseq 网络访问需要经过其代理才能将数据保存到 GitHub，相较于 Obsidian 直接使用本地 Markdown 文件保存，Logseq 并不占优势。不过有能力可以自行搭建。~~
 
+Logseq 目前已经可以使用客户端，所有的数据都可以离线在本地。
 
 ### RoamEdit
 看名字就知道又是一款 Roam Research 的仿作，不过让我惊奇的是其网页的流畅度相较于 Logseq 还是不错。但是问题依然是那样的，官网一行隐私说明都没有，一个备案号，一个交流群，看着就不想深入使用的样子。可能也是某位大神练手之作，值得鼓励。不过我就不去尝试使用了。
 
-
 ### Workflowy
 Workflowy 和 RoamEdit 比较类似，并且在网页操作上也比较流畅，但两者虽然都支持导出数据，但依然需要联网才能使用，和我个人的情况并不相符，就算了。
 
-往往有些时候鱼与熊掌不可兼得，当选择了网页版，就自然地获得了数据的同步，也自然可以期望未来的多客户端同步，但问题也就是在此，一旦这些网络的服务关闭，或者再一个没有网络的地方，那么一切都没有办法获取了。而 Obisidian 使用纯文本的方式，并且桌面客户端并不会发起网络连接，那么自然就丢失了同步的便利，而与此同时你也就获得了自己笔记的所有权，即使 Obisidian 未来不再更新了，那么也可以使用 Vim 或者 VS Code 的 [Foam](https://foambubble.github.io/foam/) 获得一份相差不多的体验，并且因为是纯文本，所以那些[终端里的工具](/post/2020/10/my-favorite-cli-tools.html)，比如 [fzf](/post/2019/08/fzf-usage.html)，[Vim](https://einverne.github.io/categories.html#Vim)，[rg](/post/2019/09/ripgrep-recursively-searches-directories-using-regex-pattern.html) 等等都可以直接拾起来用。这样的体验反而要比等待网络连接，然后才能进行操作要来的快捷方便很多。另外 Obisidian 不能在移动端使用的问题，我通过 [Syncthing](/post/2019/10/syncthing.html) 加上 [Markor](https://play.google.com/store/apps/details?id=net.gsantner.markor&hl=en_US) 完美的解决了。其他移动端的可以参考官网给出的[建议](https://forum.obsidian.md/t/how-do-i-work-with-obsidian-on-mobile/471)。
+往往有些时候鱼与熊掌不可兼得，当选择了网页版，就自然地获得了数据的同步，也自然可以期望未来的多客户端同步，但问题也就是在此，一旦这些网络的服务关闭，或者再一个没有网络的地方，那么一切都没有办法获取了。而 Obsidian 使用纯文本的方式，并且桌面客户端并不会发起网络连接，那么自然就丢失了同步的便利，而与此同时你也就获得了自己笔记的所有权，即使 Obsidian 未来不再更新了，那么也可以使用 Vim 或者 VS Code 的 [Foam](https://foambubble.github.io/foam/) 获得一份相差不多的体验，并且因为是纯文本，所以那些 [终端里的工具](/post/2020/10/my-favorite-cli-tools.html) ，比如 [fzf](/post/2019/08/fzf-usage.html) ， [Vim](/categories.html#Vim) ， [rg](/post/2019/09/ripgrep-recursively-searches-directories-using-regex-pattern.html) 等等都可以直接拾起来用。这样的体验反而要比等待网络连接，然后才能进行操作要来的快捷方便很多。另外 Obsidian 不能在移动端使用的问题，我通过 [Syncthing](/post/2019/10/syncthing.html) 加上 [Markor](https://play.google.com/store/apps/details?id=net.gsantner.markor&hl=en_US) 完美的解决了。其他移动端的可以参考官网给出的 [建议](https://forum.obsidian.md/t/how-do-i-work-with-obsidian-on-mobile/471) 。
 
-再就是块应用，Obsidian 不支持，但是 Obisidian 可以对笔记的子标题进行引用，对我来说似乎也已经足够了。毕竟 [Zettelkasten](/post/2020/02/zettelkasten-note-taking-method.html) 的精髓部分就是每一则笔记的原子性。
-
+再就是块应用，Obsidian 不支持，但是 Obsidian 可以对笔记的子标题进行引用，对我来说似乎也已经足够了。毕竟 [Zettelkasten](/post/2020/02/zettelkasten-note-taking-method.html) 的精髓部分就是每一则笔记的原子性。
 
 ## reference
 

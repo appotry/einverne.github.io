@@ -1,14 +1,15 @@
 ---
 layout: post
 title: "Prometheus: 监控系统和时序数据库"
+aliases: "Prometheus: 监控系统和时序数据库"
 tagline: ""
 description: ""
-category:
+category: 学习笔记
 tags: [prometheus, monitor, tsdb, time-series,]
 last_updated:
 ---
 
-Prometheus 是一个用 Go 写的监控系统，Prometheus 内置一个时序数据库。Prometheus 受到 Google borgmon 监控系统启发，2012 年起源于 SoundCloud 内部，后来成为第二个加入 Cloud Native Computing Foundation 的项目。
+Prometheus 是一个用 Go 写的监控系统，最早由 SoundCloud 开发并开源，Prometheus 内置一个时序数据库。Prometheus 受到 Google borgmon 监控系统启发，2012 年起源于 SoundCloud 内部，后来成为第二个加入 Cloud Native Computing Foundation 的项目。
 
 > It collects metrics from configured targets at given intervals, evaluates rule expressions, displays the results, and can trigger alerts if some condition is observed to be true.
 
@@ -22,7 +23,7 @@ Prometheus 区别于其他监控系统的地方在于：
 	- metric 可以设置任意维度标签
 	- 双精度浮点，Unicode 标签
 
-- 灵活强大的查询语言 (PromQL)，可以轻易的利用其多维信息
+- 灵活强大的查询语言 ([[PromQL]])，可以轻易的利用其多维信息
 - Prometheus 服务是一个单独的二进制文件，可以直接在本地工作
 - 无需依赖分布式存储；单服务器节点是自治的 (single server nodes are autonomous)
 - 高效：每个采样点只有 3.5 bytes 占用，单一服务每秒可以处理百万级别 metrics
@@ -110,16 +111,18 @@ Prometheus Server 可以有很多安装方式，Docker，Ansible，Chef，Puppet
 
 或者使用 Docker compose:
 
-	version: '2'
-	services:
-	prometheus:
-	image: prom/prometheus
-	volumes:
-	  - ./prometheus.yml:/etc/prometheus/prometheus.yml
-	command:
-	  - '--config.file=/etc/prometheus/prometheus.yml'
-	ports:
-	  - '9090:9090'
+```
+version: '2'
+services:
+  prometheus:
+  image: prom/prometheus
+  volumes:
+    - ./prometheus.yml:/etc/prometheus/prometheus.yml
+  command:
+    - '--config.file=/etc/prometheus/prometheus.yml'
+  ports:
+    - '9090:9090'
+```
 
 ### Node exporter
 Prometheus 主要用于监控 Web 服务，如果要监控物理机，则需要在机器上安装 node exporter, exporter 会暴露 metrics 给 Prometheus，包括 CPU 负载，内存使用，磁盘 IO，网络等等。[^exporter]
@@ -206,8 +209,8 @@ WantedBy=multi-user.target
 	rate(node_cpu_seconds_total{mode="system"}[1m])
 	rate(node_network_receive_bytes_total[1m])
 
-### Alertmanger
-Alertmanger 也可以通过 Docker 来安装使用：
+### Alert Manger
+Alert Manger 也可以通过 Docker 来安装使用：
 
 	docker run -d -p 9093:9093 \
         -v /path/to/alertmanager/config.yml:/etc/alertmanager/config.yml \
@@ -237,27 +240,29 @@ Prometheus 默认的数据采集方式是通过 pull 模型，在配置中能看
 
 通过 Docker compose 安装：
 
-	grafana:
-		image: grafana/grafana
-		volumes:
-			- grafana_data:/var/lib/grafana
-		environment:
-		  - GF_SECURITY_ADMIN_PASSWORD=pass
-		depends_on:
-		  - prometheus
-		ports:
-		  - '3000:3000'
-
+```
+grafana:
+  image: grafana/grafana
+  volumes:
+      - grafana_data:/var/lib/grafana
+  environment:
+    - GF_SECURITY_ADMIN_PASSWORD=pass
+  depends_on:
+    - prometheus
+  ports:
+    - '3000:3000'
+```
 
 ## Prometheus config
 在安装好 Prometheus 会有 yaml 格式的配置文件。主要分为这几个部分：
 
-- global: 全局配置
-- scrape_configs: 定义 Prometheus 需要 pull 的目标
-- alerting: Alertmanager 配置
-- rule_files: 告警规则
+- `global`: 全局配置
+- `scrape_configs`: 定义 Prometheus 需要 pull 的目标
+- `alerting`: Alertmanager 配置
+- `rule_files`: 告警规则
 
 更多参数的解释可以参考[官网](https://prometheus.io/docs/prometheus/latest/configuration/configuration/).
+
 ### alert rules
 告警配置样例。
 
@@ -268,8 +273,8 @@ ALERT InstanceDown   # alert 名字
   FOR 5m             # 条件保持 5m 才会发出 alert
   LABELS { severity = "critical" }  # 设置 alert 的标签
   ANNOTATIONS {             # alert 的其他标签，但不用于标识 alert
-    summary = "Instance {{ $labels.instance }} down",
-	description = "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.",
+    summary = "Instance \{\{ $labels.instance \}\} down",
+	description = "\{\{ $labels.instance \}\} of job \{\{ $labels.job \}\} has been down for more than 5 minutes.",
   }
 ```
 
@@ -278,7 +283,7 @@ ALERT InstanceDown   # alert 名字
 
 我在最初寻找监控系统的时候就是为了给 Flask 应用使用。而 Prometheus 在各个方面都超出了我的预期，不过再回到原始的初衷。
 
-Flask 中使用 Prometheus 需要引入 prometheus_client , Prometheus 的 Python 客户端。
+Flask 中使用 Prometheus 需要引入 `prometheus_client` , Prometheus 的 Python 客户端。
 
 ```
 import prometheus_client
@@ -305,7 +310,7 @@ if __name__ == '__main__':
 	app.run(host='0.0.0.0', port=5000)
 ```
 
-修改 prometheus.yml 配置文件。
+修改 `prometheus.yml` 配置文件。
 
 ```
 scrape_configs:
@@ -320,7 +325,7 @@ scrape_configs:
 
 
 ## PromQL
-Prometheus 内置了数据查询语言 PromQL，它提供对时间序列数据丰富的查询，聚合以及逻辑运算的能力。同时也可以利用 PromQL 做告警和数据可视化。利用 Prometheus 可以轻易的回答这些问题：[^answer]
+Prometheus 内置了数据查询语言 `PromQL`，它提供对时间序列数据丰富的查询，聚合以及逻辑运算的能力。同时也可以利用 `PromQL` 做告警和数据可视化。利用 Prometheus 可以轻易的回答这些问题：[^answer]
 
 [^answer]: <https://yunlzheng.gitbook.io/prometheus-book/parti-prometheus-ji-chu/>
 
@@ -330,7 +335,7 @@ Prometheus 内置了数据查询语言 PromQL，它提供对时间序列数据�
 - 过去 5 分钟占用 CPU 最高的应用服务
 
 
-PromQL 是 Prometheus 中非常重要的概念。最简单的使用方式就是输入指标名称，比如
+`PromQL` 是 Prometheus 中非常重要的概念。最简单的使用方式就是输入指标名称，比如
 
 	up
 

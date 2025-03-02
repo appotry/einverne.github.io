@@ -4,6 +4,7 @@ permalink: /post/:year/:month/:title.html
 
 exclude: [".rvmrc", ".rbenv-version", "README.md", "Rakefile", "changelog.md", "vendor", "Gemfile", "Gemfile.lock", ".travis.yml"]
 paginate: 10
+lang: zh
 description_length: 200
 markdown: kramdown
 kramdown:
@@ -11,14 +12,16 @@ kramdown:
     default_lang: plaintext
 encoding: UTF-8
 highlighter: rouge
-
+excerpt_separator: "\n\n"
 # Themes are encouraged to use these universal variables
 # so be sure to set them if your theme uses them.
 #
 title : Verne in GitHub
 tagline: 学习笔记、经验总结、产品体验
-image: https://lh5.googleusercontent.com/-hnukhkmD--I/V4m8XAu5yCI/AAAAAAABAAE/M4l0oJTVFoIOZoY4hSG7-rgFwbgym5H5wCL0B/w512-h439-no/IMG_20160715_125428.jpg
+image: https://photo.einverne.info/images/2024/08/10/MenX.jpg
 repo_url: https://github.com/einverne/einverne.github.io
+description: 博客内容涵盖多个主题，包括 Jekyll、Linux 命令、编程语言学习笔记、各种产品体验、经验总结等。还深入探讨 Git、Java、Vim、Linux、Android 等技术领域，分享关于 Docker、Go、Spring、开源项目的见解。
+url : https://blog.einverne.info
 author :
   name : Ein Verne
   email : git@einverne.info
@@ -35,7 +38,7 @@ author :
 # Else if you are pushing to username.github.io, replace with your username.
 # Finally if you are pushing to a GitHub project page, include the project name at the end.
 #
-production_url : https://einverne.github.io
+production_url : https://blog.einverne.info
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
